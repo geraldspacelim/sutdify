@@ -10,6 +10,13 @@
   margin: 10% auto 0 auto;
 }
 
+.vertical-line {
+  width: 1px; /* Line width */
+  background-color: #d45d7d; /* Line color */
+  height: 46px; /* Override in-line if you want specific height. */
+  float: left; 
+}
+
 
 form {
   width: 600px;
@@ -35,7 +42,7 @@ form {
 .input {
   margin-left: auto;
   margin-right: auto;
-  width: 600px;
+  width: 650px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -46,16 +53,9 @@ form {
   height: 44px;
   border: none;
 }
-
-.vertical-line{
-  width: 2px; /* Line width */
-  background-color: black; /* Line color */
-  height: 100%; /* Override in-line if you want specific height. */
-}
-
   
 #longURL {
-  width: 60%;
+  width: 55%;
   background: #FDFCFB;
   font-family: inherit;
   color: #737373;
@@ -63,10 +63,11 @@ form {
   text-indent: 5%;
   border-radius: 5px 0 0 5px;
   caret-color: #d45d7d;
+  border-right-color: #E86C8D;
 }
 
 #shortURL {
-  width: 20%;
+  width: 25%;
   background: #FDFCFB;
   font-family: inherit;
   color: #737373;
@@ -79,7 +80,7 @@ form {
 
 #sutdify {
   /* margin-left: %; */
-  width: 15%;
+  width: 20%;
   height: 46px;
   background: #E86C8D;
   font-family: inherit;
@@ -101,6 +102,10 @@ form {
   outline: none;
 }
 
+#shortURL:focus {
+  outline: none;
+}
+
 #sutdify:focus {
   outline: none;
 }
@@ -118,7 +123,7 @@ input:focus::-webkit-input-placeholder {
 
 
 #copy {
-  width: 15%;
+  width: 20%;
   height: 46px;
   background-color: transparent;
   font-family: inherit;
@@ -138,26 +143,47 @@ input:focus::-webkit-input-placeholder {
   color: white;
 }
 
-  .notify{  
-    position:absolute;
-    top:0px;
-    width:100%;
-    height:0;  
-    box-sizing:border-box;
-    color:white;  
-    text-align:center;
-    background:rgba(0,0,0,.6);
-    overflow:hidden;
-    box-sizing:border-box;
-    transition:height .2s;
-  }
-  
-  #notifyType:before{
-    display:block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top:15px; 
-  }
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;} 
+  to {top: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 30px; opacity: 1;} 
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 30px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
 
   .active{  
     height:50px;

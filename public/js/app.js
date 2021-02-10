@@ -1,6 +1,7 @@
 const shrinkForm = document.querySelector('form')
 const longURL = document.querySelector('#longURL')
-const id = document.querySelector('#id') 
+const id = document.querySelector('#shortURL') 
+const snackbar = document.getElementById("snackbar");
 
 shrinkForm.addEventListener('submit', async (e) =>  {
     e.preventDefault()
@@ -23,7 +24,7 @@ shrinkForm.addEventListener('submit', async (e) =>  {
                 }
             } else {
                 longURL.value = window.location.href + data.id
-                id.value = ' '
+                id.value = ''
             }
         })
     })
@@ -39,12 +40,6 @@ function isEmpty() {
 
 
 function triggerErrorNotification(errorMessage) {
-    $(".notify").addClass("active");
-    $("#notifyType").addClass(errorMessage);
-    
-    setTimeout(function(){
-    $(".notify").removeClass("active");
-    $("#notifyType").removeClass(errorMessage);
-    },2000);
-
+    snackbar.className = "show";
+    setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
 }
