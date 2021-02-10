@@ -47,6 +47,12 @@ form {
   border: none;
 }
 
+.vertical-line{
+  width: 2px; /* Line width */
+  background-color: black; /* Line color */
+  height: 100%; /* Override in-line if you want specific height. */
+}
+
   
 #longURL {
   width: 60%;

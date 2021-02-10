@@ -36,12 +36,12 @@ app.post('/shortURL', async (req,res) => {
     }) 
 })
 
-app.get('/:id', async (req, res) => {
-    await sql.query(`select * from urls where Id = '${req.params.id}';`, (error, result) => {
-        if (error) throw error; 
-        res.redirect(result[0].LongURL)
-    })
-})
+// app.get('/:id', async (req, res) => {
+//     await sql.query(`select * from urls where Id = '${req.params.id}';`, (error, result) => {
+//         if (error) throw error; 
+//         res.redirect(result[0].LongURL)
+//     })
+// })
 
 
 app.listen(process.env.PORT || 8080)
