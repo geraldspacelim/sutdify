@@ -185,6 +185,20 @@ input:focus::-webkit-input-placeholder {
   to {top: 0; opacity: 0;}
 }
 
+header {
+  margin-top: 16px; 
+  margin-bottom: 48px; 
+  text-align: left;
+}
+
+header a {
+  font-size: 26px;
+  color: white; 
+  margin-right: 16px; 
+  text-decoration: none; 
+  margin-left: 10%;
+}
+
   .active{  
     height:50px;
   }

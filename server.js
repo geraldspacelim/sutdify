@@ -3,26 +3,28 @@ const express = require('express')
 const app = express() 
 const path = require('path')
 const { nanoid } = require("nanoid");
+const hbs = require('hbs')
 
 require('dotenv').config({ path: path.resolve(__dirname, '/.env') })
 app.use(express.json());
 // sql.connect()
 
-const viewsPath = path.join(__dirname, '/views')
-const publicDirectoryPath = path.join(__dirname, '/public')
+const viewsPath = path.join(__dirname, './templates/views')
+const publicDirectoryPath = path.join(__dirname, './public')
+const partialsPath = path.join(__dirname, './templates/partials')
 
 app.set('view engine', 'hbs');
 app.set('views', viewsPath)
-// hbs.registerPartials(partialsPath)
+hbs.registerPartials(partialsPath)
 app.use(express.static(publicDirectoryPath))
 
 app.get('/', async (req, res) => {
     await sql.query(`select * from urls;`, (error, result) => {
         if (error) throw error;
-        // res.render('index', {
-        //     name: 'Gerald'
-        // })
-        res.render('index')
+        res.render('index', {
+            title: 'Sutd.live'
+        })
+        // res.render('index')
     })    
     
 })
