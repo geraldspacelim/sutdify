@@ -1,20 +1,50 @@
  body {
-  background: #F8A434;
+  background: #16ffbd;
   font-family: 'Lato', sans-serif;
-  color: #FDFCFB;
+  color: black;
   text-align: center;
 }
 
+.form-btns {
+  justify-content: center;
+  width: 70%;
+  display: flex;
+  margin: 0 auto;
+}
+
+.titleText {
+  color:#f070a1;
+}
+
 .title {
-  width: 450px; 
-  margin: 10% auto 0 auto;
+  width: 550px; 
+  margin: 6% auto 0 auto;
+}
+
+.title .header{
+  font-family: 'Mansalva', cursive;
+  font-size: 46px;
 }
 
 .vertical-line {
-  width: 1px; /* Line width */
-  background-color: #d45d7d; /* Line color */
+  width: 2px; /* Line width */
+  background-color: #f070a1; /* Line color */
   height: 46px; /* Override in-line if you want specific height. */
   float: left; 
+}
+
+.fa-github:before {
+  font-size: 28px;
+}
+
+.inline-block-child {
+  display: inline-block;
+  width: auto;
+  padding: 0px 10px;
+}
+
+i {
+  cursor: pointer;
 }
 
 
@@ -25,27 +55,18 @@ form {
 
 
 .header {
-  font-size: 35px;
+  /* display:inline-block; */
+  font-size: 45px;
   text-transform: uppercase;
   letter-spacing: 5px;
 }
 
 
 .description {
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: 1px;
   line-height: 1.3em;
   margin: -2px 0 45px;
-}
-
-
-.input {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
-  display: flex;
-  align-items: center;
-  text-align: center;
 }
 
 
@@ -55,46 +76,52 @@ form {
 }
   
 #longURL {
-  width: 55%;
-  background: #FDFCFB;
+  width: 54%;
+  background: #F0EBF4;
   font-family: inherit;
   color: #737373;
   letter-spacing: 1px;
   text-indent: 5%;
   border-radius: 5px 0 0 5px;
-  caret-color: #d45d7d;
-  border-right-color: #E86C8D;
+  caret-color: #f070a1;
+  border-right-color: #f070a1;
+  float: left;
+  /* padding-right: 10px;
+  padding-left: 10px;; */
 }
 
 #shortURL {
-  width: 25%;
-  background: #FDFCFB;
+  width: 19%;
+  background: #F0EBF4;
   font-family: inherit;
   color: #737373;
   letter-spacing: 1px;
   text-indent: 5%;
-  /* border-left-color: solid 2px #d45d7d ; */  
-  caret-color: #d45d7d;
+  caret-color: #f070a1;
+  float: left;
+  border-radius: 0 5px 5px 0;
+  FONT-WEIGHT: 500;
 }
 
 
 #sutdify {
-  /* margin-left: %; */
+  float: left;
+  margin-left: 31px;
   width: 20%;
   height: 46px;
-  background: #E86C8D;
+  background: #f070a1;
   font-family: inherit;
   font-weight: bold;
-  color: inherit;
+  color: white;
   letter-spacing: 1px;
-  border-radius: 0 5px 5px 0;
+  border-radius: 5px;
   cursor: pointer;
   transition: background .3s ease-in-out;
 }
   
 
 #sutdify:hover {
-  background: #d45d7d;
+  background: #c34271;
 }
   
 
@@ -110,20 +137,26 @@ form {
   outline: none;
 }
 
+
 #copy:focus {
   outline: none;
+}
+
+input {
+  width: 600px;
+  float: left;
 }
 
 input::-webkit-input-placeholder {
   color: #999;
 }
 input:focus::-webkit-input-placeholder {
-  color: #d45d7d;
+  color: #f070a1;
 }
 
 
 #copy {
-  width: 20%;
+  width: 96%;
   height: 46px;
   background-color: transparent;
   font-family: inherit;
@@ -131,42 +164,48 @@ input:focus::-webkit-input-placeholder {
   color: inherit;
   letter-spacing: 1px;
   border-radius: 5px;
-  border:none;
-  border:solid 2px #E86C8D;
+  border: none;
+  border: solid 2px #f070a1;
   cursor: pointer;
-  color: #E86C8D;
-  margin-left: 5%;
+  color: #f070a1;
+  /* margin-left: 5%; */
+  align-self: flex-end;
 }
 
 #copy:hover { 
-  background: #E86C8D;
+  background: #f070a1;
   color: white;
 }
 
 #snackbar {
-  visibility: hidden;
-  min-width: 250px;
-  margin-left: -125px;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  border-radius: 2px;
-  padding: 16px;
-  position: fixed;
-  z-index: 1;
-  left: 50%;
+  font-size: 14px;
+  font-family: 'Helvetica', sans-serif;
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: black; /* Black background color */
+  color: #F0EBF4; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 25px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
   top: 30px;
-  font-size: 17px;
+  letter-spacing: 1px; /* 30px from the bottom */
 }
 
 #snackbar.show {
-  visibility: visible;
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
+/* Animations to fade the snackbar in and out */
 @-webkit-keyframes fadein {
-  from {top: 0; opacity: 0;} 
+  from {top: 0; opacity: 0;}
   to {top: 30px; opacity: 1;}
 }
 
@@ -176,7 +215,7 @@ input:focus::-webkit-input-placeholder {
 }
 
 @-webkit-keyframes fadeout {
-  from {top: 30px; opacity: 1;} 
+  from {top: 30px; opacity: 1;}
   to {top: 0; opacity: 0;}
 }
 
@@ -185,28 +224,87 @@ input:focus::-webkit-input-placeholder {
   to {top: 0; opacity: 0;}
 }
 
+author li {
+  letter-spacing: 2px;
+  font-family: inherit;
+  display:inline-block;
+}
+
+author ul {
+  padding: 5% 0 0 0;
+}
+
 header {
   margin-top: 16px; 
   margin-bottom: 48px; 
-  text-align: left;
+  justify-content: space-between;
+  display: flex;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-bottom: 0%;
+  /* text-align: left; */
 }
 
 header a {
   font-size: 26px;
-  color: white; 
-  margin-right: 16px; 
+  color: black; 
+  /* margin-right: 16px;  */
   text-decoration: none; 
-  margin-left: 10%;
+  /* margin-left: 10%; */
 }
 
-  .active{  
-    height:50px;
-  }
+.tooltip {
+  position: relative;
+  display: flex;
+  width: 100px;
+  margin-left: 29px;
+  bottom: 0px;
+}
 
-  .dupEntry:before{
-    Content:"Duplicate Entry";
-  }
-  
-  .missingLong:before{
-    Content:"Missing Long URL";
-  }
+.tooltip .tooltiptext {
+  /* visibility: hidden; */
+  font-family: 'Helvetica', sans-serif;
+  font-size: 14px;
+  width: 150px;
+  letter-spacing: 1px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 85%;
+  left: 50%;
+  margin-left: -90px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip .tooltiptext {
+  opacity: 0;
+} 
+
+.authorText p{
+  color: #f070a1;
+}
+
+.authorText p:hover{
+  cursor: pointer;
+}
+
+.navigator p {
+  font-family: 'Helvetica', sans-serif;
+  letter-spacing: 0.5px;
+}

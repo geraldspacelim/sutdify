@@ -22,14 +22,16 @@ app.get('/', async (req, res) => {
     await sql.query(`select * from urls;`, (error, result) => {
         if (error) throw error;
         res.render('index', {
-            title: 'Sutd.live'
+            title: 'sutd.live',
+            author: '@geraldspacelim'
         })
-        // res.render('index')
     })    
-    
 })
 
 app.post('/shortURL', async (req,res) => {
+    if (req.body.longURL === '') {
+        return res.send({error: {code: "EMPTY_URL"}})
+    } 
     if (req.body.id === '') {
         req.body.id = nanoid()
     }
