@@ -38,6 +38,9 @@ function triggerErrorSuccess(message) {
         case "ER_DUP_ENTRY":
             snackbar.innerHTML = "Oops! The custom link is taken"
             break;
+        case "FMT_ERR": 
+            snackbar.innerHTML = "Please enter a valid URL!"
+            break;
         case "SUCCESS": 
             snackbar.innerHTML = "SUCCESS!"   
             break;

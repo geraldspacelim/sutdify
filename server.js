@@ -12,6 +12,10 @@ app.use(express.json());
 const viewsPath = path.join(__dirname, './templates/views')
 const publicDirectoryPath = path.join(__dirname, './public')
 const partialsPath = path.join(__dirname, './templates/partials')
+const web_regex = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+
+
+
 
 app.set('view engine', 'hbs');
 app.set('views', viewsPath)
@@ -31,9 +35,11 @@ app.get('/', async (req, res) => {
 app.post('/shortURL', async (req,res) => {
     if (req.body.longURL === '') {
         return res.send({error: {code: "EMPTY_URL"}})
-    } 
+    } else if (!web_regex.test(req.body.longURL)) {
+        return res.send({error: {code: "FMT_ERR"}})
+    }
     if (req.body.id === '') {
-        req.body.id = nanoid()
+        req.body.id = nanoid(8)
     }
     await sql.query(`insert into urls (LongURL, Id) values ('${req.body.longURL}', '${req.body.id}')`, (error,result) => {
         if (error) {

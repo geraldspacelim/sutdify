@@ -49,7 +49,7 @@ i {
 
 
 form {
-  width: 600px;
+  width: 620px;
   margin: 4% auto;
 }
 
@@ -76,7 +76,9 @@ form {
 }
   
 #longURL {
-  width: 54%;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 51%;
   background: #F0EBF4;
   font-family: inherit;
   color: #737373;
@@ -91,7 +93,9 @@ form {
 }
 
 #shortURL {
-  width: 19%;
+  width: 17%;
+  padding-left: 10px;
+  padding-right: 10px;
   background: #F0EBF4;
   font-family: inherit;
   color: #737373;
@@ -305,6 +309,6 @@ header a {
 }
 
 .navigator p {
-  font-family: 'Helvetica', sans-serif;
-  letter-spacing: 0.5px;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
 }
