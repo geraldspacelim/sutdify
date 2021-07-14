@@ -1,17 +1,13 @@
+require('dotenv').config()
 const sql = require("./connection")
 const express = require('express')
 const app = express() 
 const path = require('path')
 const { nanoid } = require("nanoid");
-const hbs = require('hbs')
-
-require('dotenv').config({ path: path.resolve(__dirname, '/.env') })
 app.use(express.json());
-// sql.connect()
 
 const viewsPath = path.join(__dirname, './templates/views')
 const publicDirectoryPath = path.join(__dirname, './public')
-// const partialsPath = path.join(__dirname, './templates/partials')
 const web_regex = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
 
 
