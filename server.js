@@ -11,15 +11,14 @@ app.use(express.json());
 
 const viewsPath = path.join(__dirname, './templates/views')
 const publicDirectoryPath = path.join(__dirname, './public')
-const partialsPath = path.join(__dirname, './templates/partials')
+// const partialsPath = path.join(__dirname, './templates/partials')
 const web_regex = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
 
 
-
-
-app.set('view engine', 'hbs');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 app.set('views', viewsPath)
-hbs.registerPartials(partialsPath)
+// hbs.registerPartials(partialsPath)
 app.use(express.static(publicDirectoryPath))
 
 app.get('/', async (req, res) => {

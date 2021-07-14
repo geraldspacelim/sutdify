@@ -2,12 +2,11 @@ const shrinkForm = document.querySelector('form')
 const longURL = document.querySelector('#longURL')
 const id = document.querySelector('#shortURL') 
 const snackbar = document.getElementById("snackbar");
-const tooltip = document.getElementById("myTooltip");
 const copyBtn = document.getElementById("copy");
 
+copyBtn.style.display = 'none';
 
-shrinkForm.addEventListener('submit', async (e) =>  {
-    e.preventDefault()
+async function shortenURL() {
     const data = {longURL: longURL.value, id: id.value}
     await fetch('/shortURL', {
         method: 'POST',
@@ -17,17 +16,17 @@ shrinkForm.addEventListener('submit', async (e) =>  {
         body: JSON.stringify(data)
     }).then((response) => {
         response.json().then((data) => {
-            console.log(data)
             if (data.error) {
                 return triggerErrorSuccess(data.error.code)
             } else {
                 longURL.value = window.location.href + data.id
                 id.value = ''
+                copyBtn.style.display = '';
                 return triggerErrorSuccess('SUCCESS')
             }
         })
     })
-})
+}
 
 
 function triggerErrorSuccess(message) {
@@ -44,26 +43,25 @@ function triggerErrorSuccess(message) {
         case "SUCCESS": 
             snackbar.innerHTML = "SUCCESS!"   
             break;
+        case "COPY": 
+            snackbar.innerHTML = "Copied to clipboard!"   
+            break;
     }
     snackbar.className = "show";
     setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
 }
 
-function github() {
+function goToGithub() {
     window.location.href = "https://github.com/geraldspacelim/sutdify"
 }
 
-function maingithub() {
-    window.location.href = "https://github.com/geraldspacelim?tab=repositories"
-}
 
-function copyToClipBoard() {
+
+function copyURL() {
     if (longURL.value !== "") {
-        longURL.select();
+        // longURL.select();
         document.execCommand("copy");
-        tooltip.style.opacity = '1'
-        tooltip.style.transition = 'opacity 0.5s'
-        tooltip.innerHTML = "Copied to clipboard";
+        triggerErrorSuccess("COPY")
     }
 }
 
