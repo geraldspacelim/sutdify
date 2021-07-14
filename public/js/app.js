@@ -51,21 +51,11 @@ function triggerErrorSuccess(message) {
     setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
 }
 
-function goToGithub() {
-    window.location.href = "https://github.com/geraldspacelim/sutdify"
-}
-
 
 
 function copyURL() {
     if (longURL.value !== "") {
-        // longURL.select();
         document.execCommand("copy");
         triggerErrorSuccess("COPY")
     }
 }
-
-function outFunc() {
-    tooltip.style.opacity = '0'
-    tooltip.style.transition = 'opacity 0.5s'
-  }
