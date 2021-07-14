@@ -20,10 +20,7 @@ app.use(express.static(publicDirectoryPath))
 app.get('/', async (req, res) => {
     await sql.query(`select * from urls;`, (error, result) => {
         if (error) throw error;
-        res.render('index', {
-            title: 'sutd.live',
-            author: '@geraldspacelim'
-        })
+        res.render('index')
     })    
 })
 
